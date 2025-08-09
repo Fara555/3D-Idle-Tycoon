@@ -4,14 +4,14 @@ using UnityEngine.EventSystems;
 public class CameraController : MonoBehaviour
 {
 	[Header("Movement")] public float dragSpeed = 1.5f;
-	public bool invertX, invertY;
+	[SerializeField] private bool invertX, invertY;
 
 	[Header("Y lock")] public float fixedY = 30f;
-	public bool lockYOnStart = true;
+	[SerializeField] private bool lockYOnStart = true;
 
 	[Header("Bounds")] public bool useBounds = false;
-	public Vector2 minXZ = new Vector2(-200f, -200f);
-	public Vector2 maxXZ = new Vector2(200f, 200f);
+	[SerializeField] private Vector2 minXZ = new Vector2(-200f, -200f);
+	[SerializeField] private Vector2 maxXZ = new Vector2(200f, 200f);
 
 	private Vector3 _prevMouse;
 	private Camera _cam;
