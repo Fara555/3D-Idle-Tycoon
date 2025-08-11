@@ -4,19 +4,17 @@ using UnityEngine.AI;
 [RequireComponent(typeof(LineRenderer))]
 public class NavPathRenderer : MonoBehaviour
 {
-    [Header("Refresh")] 
-    [SerializeField] private float refreshInterval = 0.06f;
-
     [Header("Ground")] 
     [SerializeField] private LayerMask groundLayers = ~0;
     [SerializeField] private float offsetHeight = 0.03f;
 
     [Header("Arrows")]
     [SerializeField] private float lineWidth = 0.08f;
+    [SerializeField] private float endOffset = 0.2f;
 
+    [Header("Agent Path")]
     [SerializeField] private NavMeshAgent _agent;
     private LineRenderer _lr;
-    private float _timer;
 
     void Awake()
     {
@@ -35,12 +33,7 @@ public class NavPathRenderer : MonoBehaviour
 
     void Update()
     {
-        _timer += Time.deltaTime;
-        if (_timer >= refreshInterval)
-        {
-            _timer = 0f;
-            DrawFromAgentPath();
-        }
+        DrawFromAgentPath();
     }
 
     void DrawFromAgentPath()
@@ -58,6 +51,18 @@ public class NavPathRenderer : MonoBehaviour
         {
             corners[i] = GroundProject(corners[i]);
             corners[i].y += offsetHeight;
+        }
+        
+        if (endOffset > 0f)
+        {
+            Vector3 last = corners[corners.Length - 1];
+            Vector3 prev = corners[corners.Length - 2];
+            float dist = Vector3.Distance(prev, last);
+            if (dist > Mathf.Epsilon && endOffset < dist)
+            {
+                Vector3 dir = (last - prev).normalized;
+                corners[corners.Length - 1] = last - dir * endOffset;
+            }
         }
 
         _lr.positionCount = corners.Length;

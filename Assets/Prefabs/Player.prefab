@@ -261,8 +261,8 @@ LineRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1491363207
+  m_SortingLayer: 1
   m_SortingOrder: 5
   m_Positions:
   - {x: -11.732303, y: -0.41497082, z: 149.86145}
@@ -338,13 +338,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c96c0ee8c99441078cef1fc5bd9bc36b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  refreshInterval: 0
   groundLayers:
     serializedVersion: 2
     m_Bits: 80
-  offsetHeight: 0.03
+  offsetHeight: 0.08
   lineWidth: 3
-  lockPhaseAtPathEnd: 1
+  endOffset: 0.45
   _agent: {fileID: 1474049924681281352}
 --- !u!1 &5427989164888439654
 GameObject:
@@ -585,7 +584,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -1491363207
   m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!114 &8662341424242254800
@@ -680,7 +679,7 @@ MonoBehaviour:
   pulseAmplitude: 0.2
   pulseSpeed: 4
   hideWhenRemainingLess: 0.15
-  yOffset: 0.02
+  yOffset: 0.08
 --- !u!1 &6798809895230433979
 GameObject:
   m_ObjectHideFlags: 0
@@ -1637,12 +1636,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efff4cb05a3d1094db64c9fd5231029f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 64
   stoppingDistance: 0.2
   rotateTowardsVelocity: 1
   rotateSpeed: 720
-  clickMaxMovePx: 16
   animator: {fileID: 5472781698800632778}
   speedParam: Speed
