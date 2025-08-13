@@ -62,6 +62,7 @@ public class PlayerMover : MonoBehaviour
         {
             _agent.SetDestination(navHit.position);
             OnMoveCommand?.Invoke(navHit.position);
+            _agent.isStopped = false; 
             return true;
         }
         return false;

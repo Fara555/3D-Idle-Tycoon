@@ -9,13 +9,14 @@ public class CurrencyManager : MonoBehaviour
 	[Header("Current amounts")]
 	[SerializeField] private long gold = 500;
 	[SerializeField] private long fish = 0;
+	[SerializeField] private long maxFishCapacity = 0;
 	
 	public event Action<long> OnGoldChanged;
-	public event Action<long> OnFishChanged;
+	public event Action<long, long> OnFishChanged;
 	
 	public long Gold => gold;
 	public long Fish => fish;
-
+	public long MaxFishCapacity => maxFishCapacity;
 	private void Awake()
 	{
 		if (Instance != null && Instance != this)
@@ -29,7 +30,7 @@ public class CurrencyManager : MonoBehaviour
 	private void Start()
 	{
 		OnGoldChanged?.Invoke(gold);
-		OnFishChanged?.Invoke(fish);
+		OnFishChanged?.Invoke(fish, maxFishCapacity);
 	}
 
 	public bool TrySpendGold(long amount)
@@ -38,6 +39,15 @@ public class CurrencyManager : MonoBehaviour
 		if (gold < amount) return false;
 		gold -= amount;
 		OnGoldChanged?.Invoke(gold);
+		return true;
+	}	
+	
+	public bool TrySpendFish(long amount)
+	{
+		if (amount <= 0) return true;
+		if (fish < amount) return false;
+		fish -= amount;
+		OnFishChanged?.Invoke(fish, maxFishCapacity);
 		return true;
 	}
 
@@ -50,8 +60,11 @@ public class CurrencyManager : MonoBehaviour
 	public void AddFish(long amount)
 	{
 		if (amount == 0) return;
+
 		fish += amount;
-		OnFishChanged?.Invoke(fish);
+		fish = Math.Min(fish, maxFishCapacity);
+
+		OnFishChanged?.Invoke(fish, maxFishCapacity);
 	}
 	
 	public void SetGold(long value)
@@ -62,9 +75,17 @@ public class CurrencyManager : MonoBehaviour
 
 	public void SetFish(long value)
 	{
-		fish = value;
-		OnFishChanged?.Invoke(fish);
-	} 
+		fish = Math.Min(value, maxFishCapacity);
+		OnFishChanged?.Invoke(fish, maxFishCapacity);
+	}
+	
+	public void SetMaxFishCapacity(long value)
+	{
+		maxFishCapacity = Math.Max(0, value);
+		fish = Math.Min(fish, maxFishCapacity); 
+		OnFishChanged?.Invoke(fish, maxFishCapacity);
+	}
+
 	
 	private long _prevGold;
 	private long _prevFish;
@@ -83,7 +104,7 @@ public class CurrencyManager : MonoBehaviour
 		if (fish != _prevFish)
 		{
 			_prevFish = fish;
-			OnFishChanged?.Invoke(fish);
+			OnFishChanged?.Invoke(fish, maxFishCapacity);
 		}
 	}
 }

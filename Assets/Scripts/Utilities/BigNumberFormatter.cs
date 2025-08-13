@@ -50,7 +50,7 @@ public static class BigNumberFormatter
             group++;
             rounded = rounded / 1000d;
 
-            intDigits = (int)Math.Floor(rounded) >= 1
+            intDigits = (int)Math.Floor(rounded) >= 1 
                 ? ((int)Math.Floor(Math.Log10(Math.Floor(rounded))) + 1)
                 : 1;
             decimals = Math.Max(0, maxSignificantDigits - intDigits);

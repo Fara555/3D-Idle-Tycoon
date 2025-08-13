@@ -9,6 +9,7 @@ public class CurrencyUI : MonoBehaviour
 	[Header("References")]
 	[SerializeField] private TMP_Text goldCountText;
 	[SerializeField] private TMP_Text fishCountText;
+	[SerializeField] private TMP_Text maxFishCountText;
 
 	[Header("Formatting")]
 	[Tooltip("Significant digits used when abbreviating numbers (K, M, B...).")]
@@ -37,7 +38,7 @@ public class CurrencyUI : MonoBehaviour
 	{
 		// Initial sync
 		HandleGoldChanged(CurrencyManager.Instance.Gold);
-		HandleFishChanged(CurrencyManager.Instance.Fish);
+		HandleFishChanged(CurrencyManager.Instance.Fish, CurrencyManager.Instance.MaxFishCapacity);
 	}
 
 	private void HandleGoldChanged(long value)
@@ -47,10 +48,13 @@ public class CurrencyUI : MonoBehaviour
 		goldCountText.text = formatted;
 	}
 
-	private void HandleFishChanged(long value)
+	private void HandleFishChanged(long fish, long maxFish)
 	{
-		if (!fishCountText) return;
-		string formatted = BigNumberFormatter.Format(value, maxSignificantDigits, thousandSeparatorsUnderK);
+		if (!fishCountText && !maxFishCountText) return;
+		string formatted = BigNumberFormatter.Format(fish, maxSignificantDigits, thousandSeparatorsUnderK);
 		fishCountText.text = formatted;
+		string maxFishFormatted = BigNumberFormatter.Format(maxFish, maxSignificantDigits, thousandSeparatorsUnderK);
+		maxFishCountText.text = maxFishFormatted;
 	}
+
 }

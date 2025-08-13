@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 using Utilities.UTask;
 
 [RequireComponent(typeof(Collider))]
@@ -21,6 +22,8 @@ public class BoatInteractable : MonoBehaviour, IInteractable
     [SerializeField] private GameObject hoverArrow;
     [SerializeField] private GameObject lockedIcon;
     [SerializeField] private GameObject boatModel;
+    [SerializeField] private GameObject fishingProgressBar;
+    [SerializeField] private Image fishingProgressBarFill;
 
     [Header("Timing")] [SerializeField] private bool debugFishingTiming = false;
 
@@ -31,6 +34,8 @@ public class BoatInteractable : MonoBehaviour, IInteractable
     private CancellationTokenSource _fishCts;
 
     private bool _fishingActive;
+    private bool _isHovered = false;
+
 
     public Vector3 GetInteractPoint() => interactPoint ? interactPoint.position : transform.position;
     public float GetInteractRadius() => interactRadius;
@@ -46,6 +51,7 @@ public class BoatInteractable : MonoBehaviour, IInteractable
 
         ApplyVisuals();
         if (hoverArrow) hoverArrow.SetActive(false);
+        if (fishingProgressBar) fishingProgressBar.SetActive(false);
     }
 
     private void OnDestroy()
@@ -82,7 +88,16 @@ public class BoatInteractable : MonoBehaviour, IInteractable
 
     public void OnHover(bool state)
     {
-        if (hoverArrow) hoverArrow.SetActive(state);
+        _isHovered = state;
+        UpdateHoverVisual();
+    }
+
+    private void UpdateHoverVisual()
+    {
+        if (!hoverArrow) return;
+        // Arrow should not be visible while fishing
+        bool shouldShow = _isHovered && !_fishingActive;
+        hoverArrow.SetActive(shouldShow);
     }
 
     private async Task WaitAndStartFishingAsync(Vector3 navTarget, CancellationToken ct)
@@ -120,10 +135,10 @@ public class BoatInteractable : MonoBehaviour, IInteractable
     private async Task FishingLoopAsync(CancellationToken ct)
     {
         _fishingActive = true;
+        UpdateHoverVisual();
 
         float cycle = data.GetCycleSeconds(level);
         float timer = 0f;
-        float realElapsed = 0f; 
 
         try
         {
@@ -133,7 +148,12 @@ public class BoatInteractable : MonoBehaviour, IInteractable
                     break;
                 
                 timer += Time.deltaTime;
-                realElapsed += Time.unscaledDeltaTime;
+
+                if (fishingProgressBarFill != null && fishingProgressBar!= null)
+                {
+                    fishingProgressBar.SetActive(true);
+                    fishingProgressBarFill.fillAmount = Mathf.Clamp01(timer / cycle);
+                }
 
                 if (timer >= cycle)
                 {
@@ -141,13 +161,6 @@ public class BoatInteractable : MonoBehaviour, IInteractable
 
                     int amount = data.GetCatchAmount(level);
                     CurrencyManager.Instance.AddFish(amount);
-
-                    if (debugFishingTiming)
-                    {
-                        Debug.Log($"[BoatInteractable] Cycle done. Target={cycle:0.###}s, " +
-                                  $"RealElapsed={realElapsed:0.###}s, timeScale={Time.timeScale:0.###}");
-                        realElapsed = 0f;
-                    }
                 }
 
                 await UTaskEx.NextFrame(ct);
@@ -157,6 +170,12 @@ public class BoatInteractable : MonoBehaviour, IInteractable
         finally
         {
             _fishingActive = false;
+            if (fishingProgressBarFill != null && fishingProgressBar != null)
+            {
+                fishingProgressBarFill.fillAmount = 0f;
+                fishingProgressBar.SetActive(false);
+            }
+            UpdateHoverVisual();
         }
     }
 
@@ -164,6 +183,7 @@ public class BoatInteractable : MonoBehaviour, IInteractable
     {
         _fishCts?.Cancel();
         _fishingActive = false;
+        UpdateHoverVisual();
     }
 
     public void Build()
@@ -175,8 +195,34 @@ public class BoatInteractable : MonoBehaviour, IInteractable
         isBuilt = true;
         level = Mathf.Clamp(level, 1, data.maxLevel);
         ApplyVisuals();
+
+        if (boatModel)
+        {
+            _ = AnimateBoatAppear(boatModel.transform, 1.0f, 2f);
+        }
+
         BoatUI.I?.RefreshIfShown(this);
     }
+
+    private async Task AnimateBoatAppear(Transform target, float duration, float startYOffset)
+    {
+        Vector3 startPos = target.localPosition + Vector3.down * startYOffset;
+        Vector3 endPos = target.localPosition;
+        target.localPosition = startPos;
+
+        float time = 0f;
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            float t = Mathf.Clamp01(time / duration);
+            // Лёгкое замедление в конце
+            float easedT = 1f - Mathf.Pow(1f - t, 3f); 
+            target.localPosition = Vector3.Lerp(startPos, endPos, easedT);
+            await UTaskEx.NextFrame();
+        }
+        target.localPosition = endPos;
+    }
+
 
     public void Upgrade()
     {

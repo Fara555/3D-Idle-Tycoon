@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BoatData
   m_EditorClassIdentifier: 
   displayName: Boat
-  maxLevel: 30
+  maxLevel: 50
   buildBaseCost: 100
   upgradeBaseCost: 50
   upgradeCostGrowth: 1.15
