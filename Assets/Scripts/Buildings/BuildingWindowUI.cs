@@ -50,17 +50,17 @@ public abstract class BuildingWindowUI : MonoBehaviour, IBuildingWindowUI
 		if (_logic.IsBuilt)
 		{
 			if (_logic.Level < _logic.MaxLevel)
-				costText.text = $"Upgrade: {_logic.GetUpgradeCost()}";
+				costText.text = $"Upgrade: {BigNumberFormatter.Format(_logic.GetUpgradeCost(), 3)}";
 			else
 				costText.text = "Max Level";
 		}
 		else
 		{
-			costText.text = $"Build: {_logic.GetBuildCost()}";
+			costText.text = $"Build: {BigNumberFormatter.Format(_logic.GetBuildCost(), 3)}";
 		}
 		
-		speedText.text = $"{_logic.GetCycleLabel()}: {_logic.GetCycleTime():0.#} s";
-		amountText.text = $"{_logic.GetAmountLabel()}: {_logic.GetCatchAmount()}";
+		speedText.text = $"{_logic.GetCycleLabel()}: {BigNumberFormatter.Format(_logic.GetCycleTime(), 3)} s";
+		amountText.text = $"{_logic.GetAmountLabel()}: {BigNumberFormatter.Format(_logic.GetCatchAmount(), 3)}";
 
 		buildBtn.gameObject.SetActive(!_logic.IsBuilt);
 		upgradeBtn.gameObject.SetActive(_logic.IsBuilt && _logic.Level < _logic.MaxLevel);

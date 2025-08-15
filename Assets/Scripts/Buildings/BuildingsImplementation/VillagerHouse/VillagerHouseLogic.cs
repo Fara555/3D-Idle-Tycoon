@@ -11,6 +11,9 @@ public class VillagerHouseLogic : BuildingLogic
 	public override BuildingData BuildingData => data;
 	public override string BuildingName => "Villager House";
 	public override int MaxLevel => data.maxLevel;
+	
+	public override int BaseBuildCost => data.buildBaseCost;
+	public override int BaseUpgradeCost => data.upgradeBaseCost;
 
 	public IReadOnlyList<Villager> Villagers => villagers;
 
@@ -77,6 +80,17 @@ public class VillagerHouseLogic : BuildingLogic
 		var stats = data.GetStats(Level);
 		foreach (var v in villagers)
 			v.ApplyStats(stats.moveSpeed, stats.carryCapacity);
+	}
+
+	public override float GetCycleTime()
+	{
+		// Время цикла берём напрямую из данных — без множителя
+		return data.GetStats(Level).moveSpeed; // или data.GetCycleSeconds(Level), если используешь другой способ
+	}
+
+	public override int GetCatchAmount()
+	{
+		return data.GetStats(Level).carryCapacity;
 	}
 
 	public override string GetCycleLabel() => "Speed";

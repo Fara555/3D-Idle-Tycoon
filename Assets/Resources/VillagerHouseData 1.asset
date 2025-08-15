@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c075c750e876461b8e3e8ea1463ec389, type: 3}
-  m_Name: VillagerHouseData
+  m_Name: VillagerHouseData 1
   m_EditorClassIdentifier: 
   displayName: Villager House
   maxLevel: 3
-  buildBaseCost: 500
-  upgradeBaseCost: 250
+  buildBaseCost: 15000
+  upgradeBaseCost: 7500
   levelStats:
   - moveSpeed: 3.5
-    carryCapacity: 100
+    carryCapacity: 10000
   - moveSpeed: 4.5
-    carryCapacity: 300
+    carryCapacity: 30000
   - moveSpeed: 6
-    carryCapacity: 500
+    carryCapacity: 60000

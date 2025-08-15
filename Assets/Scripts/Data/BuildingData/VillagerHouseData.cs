@@ -11,6 +11,11 @@ public class VillagerLevelStats
 [CreateAssetMenu(fileName = "VillagerHouseData", menuName = "Tycoon/Villager House Data")]
 public class VillagerHouseData : BuildingData
 {
+	[Header("Economy")]
+	public int buildBaseCost = 150;
+	public int upgradeBaseCost = 100;
+
+	[Header("Villager Stats Per Level")]
 	public List<VillagerLevelStats> levelStats = new();
 
 	public VillagerLevelStats GetStats(int level)
@@ -21,7 +26,16 @@ public class VillagerHouseData : BuildingData
 	}
 
 	public override float GetCycleSeconds(int level = 0) => 0f;
+
 	public override int GetCatchAmount(int level) => 0;
-	public override int GetUpgradeCost(int level, int indexMultiplier) => 100 * level * indexMultiplier;
-	public override int GetBuildCost(int indexMultiplier) => 150 * indexMultiplier;
+
+	public override int GetUpgradeCost(int level, int indexMultiplier)
+	{
+		return upgradeBaseCost * level * indexMultiplier;
+	}
+
+	public override int GetBuildCost(int indexMultiplier)
+	{
+		return buildBaseCost * indexMultiplier;
+	}
 }
