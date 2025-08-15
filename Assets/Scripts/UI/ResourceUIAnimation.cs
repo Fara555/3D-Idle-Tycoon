@@ -52,26 +52,23 @@ public class ResourceUIAnimation : MonoBehaviour
     {
         if (!_cg) _cg = gameObject.AddComponent<CanvasGroup>();
 
-        // init
         _cg.alpha = 0f;
         transform.localPosition = _startLocalPos;
         transform.localScale = Vector3.one;
-
-        // Fade In + Pop + Rise (плавно стартуем)
+        
         float t = 0f;
         float totalRiseTime = fadeInTime + holdTime + fadeOutTime;
         while (t < fadeInTime && !ct.IsCancellationRequested && enabled && gameObject.activeInHierarchy)
         {
             t += Time.deltaTime;
             float u = Mathf.Clamp01(t / fadeInTime);
-            float easeIn = u * u * (3f - 2f * u); // smoothstep
+            float easeIn = u * u * (3f - 2f * u); 
             _cg.alpha = easeIn;
             transform.localScale = Vector3.one * Mathf.Lerp(1f, popScale, u);
             transform.localPosition = Vector3.LerpUnclamped(_startLocalPos, _startLocalPos + Vector3.up * rise, (t / totalRiseTime));
             await UTaskEx.NextFrame(ct);
         }
-
-        // Hold
+        
         t = 0f;
         while (t < holdTime && !ct.IsCancellationRequested && enabled && gameObject.activeInHierarchy)
         {
@@ -80,8 +77,7 @@ public class ResourceUIAnimation : MonoBehaviour
             transform.localPosition = Vector3.LerpUnclamped(_startLocalPos, _startLocalPos + Vector3.up * rise, progressed);
             await UTaskEx.NextFrame(ct);
         }
-
-        // Fade Out
+        
         t = 0f;
         while (t < fadeOutTime && !ct.IsCancellationRequested && enabled && gameObject.activeInHierarchy)
         {

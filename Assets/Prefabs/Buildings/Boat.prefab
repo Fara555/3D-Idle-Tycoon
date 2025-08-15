@@ -106,6 +106,7 @@ MonoBehaviour:
   startBuilt: 1
   indexMultiplier: 1
   data: {fileID: 11400000, guid: 966d80644d56e8441a7160857512b22b, type: 2}
+  workPoint: {fileID: 7262149452989464016}
 --- !u!114 &2970608057524825779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,6 +146,7 @@ MonoBehaviour:
   view: {fileID: 2970608057524825779}
   interactPoint: {fileID: 7262149452989464016}
   interactRadius: 0.4
+  windowUIobject: {fileID: 0}
 --- !u!1 &3893717457663036570
 GameObject:
   m_ObjectHideFlags: 0

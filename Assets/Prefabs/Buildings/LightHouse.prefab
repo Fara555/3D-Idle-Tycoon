@@ -199,6 +199,7 @@ GameObject:
   - component: {fileID: 6474089329721602877}
   - component: {fileID: 2370490512528407693}
   - component: {fileID: 6042159132924552426}
+  - component: {fileID: 8566551938524457942}
   m_Layer: 7
   m_Name: LightHouseSlot
   m_TagString: Untagged
@@ -300,6 +301,21 @@ MonoBehaviour:
   view: {fileID: 2370490512528407693}
   interactPoint: {fileID: 6298832962601920389}
   interactRadius: 0.4
+  "\u0441haracter": {fileID: 0}
+  windowUIobject: {fileID: 0}
+--- !u!114 &8566551938524457942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5441962460037610577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ad34574d9bd4de0a6c7bcc878400ee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueId: 35e6c407-cc61-458f-afca-969caa5fb260
 --- !u!1 &7801589659251842057
 GameObject:
   m_ObjectHideFlags: 0

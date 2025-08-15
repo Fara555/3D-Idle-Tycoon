@@ -1587,6 +1587,134 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0.089, y: 0.25300002, z: -0.066}
   m_TimeToStationary: 0.5
+--- !u!1 &6475660227750858668
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2214198969170246253}
+  - component: {fileID: 238214489086196602}
+  - component: {fileID: 2302246205377955832}
+  - component: {fileID: 2937097680036661774}
+  - component: {fileID: 6270495442177556478}
+  - component: {fileID: 7573897049830285802}
+  m_Layer: 7
+  m_Name: VillagerHouseSlot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2214198969170246253
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6475660227750858668}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7436843570200782767}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &238214489086196602
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6475660227750858668}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 8.444606, y: 5.320927, z: 6.1734447}
+  m_Center: {x: -1.4320979, y: 2.1605072, z: 0.5628805}
+--- !u!114 &2302246205377955832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6475660227750858668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62241213392e4910b1ddd93c44e3af53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startBuilt: 0
+  indexMultiplier: 1
+  data: {fileID: 11400000, guid: a6a2f52a38125eb4b90efd1e013b9fb8, type: 2}
+  villagerSpawnPoint: {fileID: 2085827378452489910}
+  villagerPrefab: {fileID: 6544103764414370772, guid: afe58f3ae87e8184c866788fa3b10ece, type: 3}
+--- !u!114 &2937097680036661774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6475660227750858668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af6323e2d3f24651ad6d1bd42f205575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrow: {fileID: 6314541596251541652}
+  progressBar: {fileID: 0}
+  progressFill: {fileID: 0}
+  gainRoot: {fileID: 0}
+  gainText: {fileID: 0}
+  gainMaxDigits: 3
+  gainPrefix: +
+  model: {fileID: 953442693795378790}
+  lockedIcon: {fileID: 8962249748913064397}
+  appearYOffset: 2
+  appearDuration: 1
+--- !u!114 &6270495442177556478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6475660227750858668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94012a0f755b48abbc710a2a312c2a53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logic: {fileID: 2302246205377955832}
+  view: {fileID: 2937097680036661774}
+  interactPoint: {fileID: 0}
+  interactRadius: 1.2
+  "\u0441haracter": {fileID: 0}
+  windowUIobject: {fileID: 0}
+--- !u!114 &7573897049830285802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6475660227750858668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ad34574d9bd4de0a6c7bcc878400ee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueId: 1f63b979-9f32-46f6-91a1-ed40d28a3156
 --- !u!1 &7041540029413449459
 GameObject:
   m_ObjectHideFlags: 0
@@ -1887,6 +2015,37 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0.089, y: 0.25300002, z: -0.066}
   m_TimeToStationary: 0.5
+--- !u!1 &7622372421928375453
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2085827378452489910}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2085827378452489910
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7622372421928375453}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.8067933, y: -0.08982187, z: -3.3746302}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7436843570200782767}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8524551709298965266
 GameObject:
   m_ObjectHideFlags: 0
@@ -2117,8 +2276,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 953442693795211846}
+  - {fileID: 2214198969170246253}
   - {fileID: 8799741185422886043}
   - {fileID: 476181585051226541}
+  - {fileID: 2085827378452489910}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: -3}
 --- !u!1001 &1198085233529974609
@@ -2219,15 +2380,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1812443553267744021, guid: cae11ee3e4021dc4684cc3b9e6fa0d34, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.18
+      value: -10.63
       objectReference: {fileID: 0}
     - target: {fileID: 1812443553267744021, guid: cae11ee3e4021dc4684cc3b9e6fa0d34, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.17999983
+      value: -1.56
       objectReference: {fileID: 0}
     - target: {fileID: 1812443553267744021, guid: cae11ee3e4021dc4684cc3b9e6fa0d34, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.109999895
+      value: -0.15
       objectReference: {fileID: 0}
     - target: {fileID: 2476250483108338322, guid: cae11ee3e4021dc4684cc3b9e6fa0d34, type: 3}
       propertyPath: m_SizeDelta.x
@@ -2273,6 +2434,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -0.024799824
       objectReference: {fileID: 0}
+    - target: {fileID: 6118723032855165985, guid: cae11ee3e4021dc4684cc3b9e6fa0d34, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6344833480451952192, guid: cae11ee3e4021dc4684cc3b9e6fa0d34, type: 3}
       propertyPath: m_Name
       value: GroundCanvas
@@ -2289,6 +2454,16 @@ PrefabInstance:
 --- !u!224 &476181585051226541 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1602094599885455100, guid: cae11ee3e4021dc4684cc3b9e6fa0d34, type: 3}
+  m_PrefabInstance: {fileID: 1198085233529974609}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6314541596251541652 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5116570815117246405, guid: cae11ee3e4021dc4684cc3b9e6fa0d34, type: 3}
+  m_PrefabInstance: {fileID: 1198085233529974609}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8962249748913064397 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7836327697541097116, guid: cae11ee3e4021dc4684cc3b9e6fa0d34, type: 3}
   m_PrefabInstance: {fileID: 1198085233529974609}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1514454619680658206
@@ -2655,7 +2830,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8396534493602894793, guid: 05b39d83e89b2ab4eb66809f220a9201, type: 3}
       propertyPath: m_Name
-      value: House
+      value: VillagerHouse
       objectReference: {fileID: 0}
     - target: {fileID: 8396534493602894793, guid: 05b39d83e89b2ab4eb66809f220a9201, type: 3}
       propertyPath: m_IsActive
@@ -2716,5 +2891,10 @@ PrefabInstance:
 --- !u!4 &953442693795211846 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8396534493602926569, guid: 05b39d83e89b2ab4eb66809f220a9201, type: 3}
+  m_PrefabInstance: {fileID: 8772225607873242543}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &953442693795378790 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8396534493602894793, guid: 05b39d83e89b2ab4eb66809f220a9201, type: 3}
   m_PrefabInstance: {fileID: 8772225607873242543}
   m_PrefabAsset: {fileID: 0}
