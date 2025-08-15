@@ -40,7 +40,8 @@ public static class SaveManager
 						data.villagers.Add(new VillagerSave
 						{
 							villagerId = vId,
-							assignedWorkplaceId = wId
+							assignedWorkplaceId = wId,
+							originHouseId = bId
 						});
 					}
 				}
@@ -90,12 +91,15 @@ public static class SaveManager
 
 					if (building is VillagerHouseLogic house)
 					{
-						var villagersForHouse = data.villagers.FindAll(v => !string.IsNullOrEmpty(v.villagerId));
+						var villagersForHouse = data.villagers
+							.FindAll(v => v.originHouseId == buildingSave.buildingId);
+
 						house.SpawnVillagersIfNeeded(villagersForHouse);
 					}
 				}
 			}
 		}
+
 
 		foreach (var b in allBuildings)
 		{

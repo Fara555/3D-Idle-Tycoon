@@ -6974,6 +6974,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8293083315605343432, guid: e6cd2cefcaa8dd84489ea9af11d15af7, type: 3}
   m_PrefabInstance: {fileID: 218298973}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &220874651 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2302246205377955832, guid: 0d03ab3e838848f408b268be895fb9be, type: 3}
+  m_PrefabInstance: {fileID: 1068501210}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62241213392e4910b1ddd93c44e3af53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &223515064
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12006,7 +12017,7 @@ MonoBehaviour:
   - {fileID: 1288719454}
   - {fileID: 1549388810}
   - {fileID: 90315899}
-  - {fileID: 1613794374}
+  - {fileID: 220874651}
 --- !u!1001 &352312139
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34370,6 +34381,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -3
       objectReference: {fileID: 0}
+    - target: {fileID: 7573897049830285802, guid: 0d03ab3e838848f408b268be895fb9be, type: 3}
+      propertyPath: uniqueId
+      value: dd231541-0717-4816-8708-f92cbb4379cc
+      objectReference: {fileID: 0}
     - target: {fileID: 8763446117398205718, guid: 0d03ab3e838848f408b268be895fb9be, type: 3}
       propertyPath: m_Name
       value: VillagerHouse (1)
@@ -34378,9 +34393,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7436843570200782767, guid: 0d03ab3e838848f408b268be895fb9be, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 1613794370}
-    - targetCorrespondingSourceObject: {fileID: 7436843570200782767, guid: 0d03ab3e838848f408b268be895fb9be, type: 3}
       insertIndex: -1
       addedObject: {fileID: 783205601}
     m_AddedComponents: []
@@ -34388,21 +34400,6 @@ PrefabInstance:
 --- !u!4 &1068501211 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7436843570200782767, guid: 0d03ab3e838848f408b268be895fb9be, type: 3}
-  m_PrefabInstance: {fileID: 1068501210}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1068501212 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6314541596251541652, guid: 0d03ab3e838848f408b268be895fb9be, type: 3}
-  m_PrefabInstance: {fileID: 1068501210}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1068501213 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8962249748913064397, guid: 0d03ab3e838848f408b268be895fb9be, type: 3}
-  m_PrefabInstance: {fileID: 1068501210}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1068501214 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 953442693795378790, guid: 0d03ab3e838848f408b268be895fb9be, type: 3}
   m_PrefabInstance: {fileID: 1068501210}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1070756321
@@ -53490,134 +53487,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 826378913732519652, guid: 14af263ad028e444fab71f6b70bd0130, type: 3}
   m_PrefabInstance: {fileID: 1613679890}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1613794369
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1613794370}
-  - component: {fileID: 1613794375}
-  - component: {fileID: 1613794374}
-  - component: {fileID: 1613794373}
-  - component: {fileID: 1613794372}
-  - component: {fileID: 1613794371}
-  m_Layer: 7
-  m_Name: VillagerHouseSlot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1613794370
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1613794369}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1068501211}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1613794371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1613794369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ad34574d9bd4de0a6c7bcc878400ee7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uniqueId: 1f63b979-9f32-46f6-91a1-ed40d28a3156
---- !u!114 &1613794372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1613794369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94012a0f755b48abbc710a2a312c2a53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  logic: {fileID: 1613794374}
-  view: {fileID: 1613794373}
-  interactPoint: {fileID: 0}
-  interactRadius: 1.2
-  "\u0441haracter": {fileID: 793872020}
-  windowUIobject: {fileID: 615734546}
---- !u!114 &1613794373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1613794369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af6323e2d3f24651ad6d1bd42f205575, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  arrow: {fileID: 1068501212}
-  progressBar: {fileID: 0}
-  progressFill: {fileID: 0}
-  gainRoot: {fileID: 0}
-  gainText: {fileID: 0}
-  gainMaxDigits: 3
-  gainPrefix: +
-  model: {fileID: 1068501214}
-  lockedIcon: {fileID: 1068501213}
-  appearYOffset: 2
-  appearDuration: 1
---- !u!114 &1613794374
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1613794369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62241213392e4910b1ddd93c44e3af53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startBuilt: 0
-  indexMultiplier: 1
-  data: {fileID: 11400000, guid: a6a2f52a38125eb4b90efd1e013b9fb8, type: 2}
-  villagerSpawnPoint: {fileID: 783205601}
-  villagerPrefab: {fileID: 6544103764414370772, guid: afe58f3ae87e8184c866788fa3b10ece, type: 3}
---- !u!65 &1613794375
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1613794369}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 8.444606, y: 5.320927, z: 6.1734447}
-  m_Center: {x: -1.4320979, y: 2.1605072, z: 0.5628805}
 --- !u!1001 &1619031636
 PrefabInstance:
   m_ObjectHideFlags: 0

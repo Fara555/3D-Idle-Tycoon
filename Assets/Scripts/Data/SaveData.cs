@@ -16,8 +16,9 @@ public class SaveData
 [System.Serializable]
 public class VillagerSave
 {
-	public string villagerId;           
-	public string assignedWorkplaceId;  
+	public string villagerId;
+	public string assignedWorkplaceId;
+	public string originHouseId; 
 }
 
 [System.Serializable]
