@@ -16,6 +16,12 @@ public class SaveController : MonoBehaviour
 		SaveManager.SaveGame(allBuildings);
 	}
 	
+	private void OnApplicationPause(bool pause)
+	{
+		if (pause)
+			SaveManager.SaveGame(allBuildings);
+	}
+	
 	// public void Save() => SaveManager.SaveGame(allBuildings);
 	// public void Load() => SaveManager.LoadGame(allBuildings);
 }

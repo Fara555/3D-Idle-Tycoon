@@ -6,11 +6,11 @@ public class SaveData
 	public long gold;
 	public long fish;
 	public long maxFishCapacity;
-
+	
 	public List<BuildingSave> buildings = new();
 	public List<VillagerSave> villagers = new();
-	public Dictionary<string, List<string>> houseVillagerIds = new(); 
-
+	
+	public long lastOnlineBinaryTime;
 }
 
 [System.Serializable]

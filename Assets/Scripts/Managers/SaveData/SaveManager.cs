@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
@@ -47,6 +48,8 @@ public static class SaveManager
 				}
 			}
 		}
+
+		data.lastOnlineBinaryTime = DateTime.Now.ToBinary();
 
 		string json = JsonUtility.ToJson(data, true);
 		File.WriteAllText(savePath, json);
@@ -100,7 +103,6 @@ public static class SaveManager
 			}
 		}
 
-
 		foreach (var b in allBuildings)
 		{
 			if (b is VillagerHouseLogic house)
@@ -119,6 +121,32 @@ public static class SaveManager
 					}
 				}
 			}
+		}
+
+		// Offline progress
+		long earnedGold = 0;
+
+		if (data.lastOnlineBinaryTime != 0)
+		{
+			try
+			{
+				var lastOnline = DateTime.FromBinary(data.lastOnlineBinaryTime);
+				var timeAway = DateTime.Now - lastOnline;
+
+				var secondsAway = Math.Max(0, timeAway.TotalSeconds);
+				if (secondsAway >= 1.0)
+					earnedGold = OfflineProgressCalculator.Apply(allBuildings, secondsAway);
+			}
+			catch (Exception e)
+			{
+				Debug.LogWarning($"[Offline] Failed to parse lastOnlineBinaryTime: {data.lastOnlineBinaryTime}. {e.Message}");
+			}
+		}
+
+		if (earnedGold > 0)
+		{
+			OfflinePopupUI.Show(earnedGold);
+			Debug.Log($"Earned {earnedGold} gold from offline progress.");
 		}
 
 		Debug.Log("Game Loaded.");
