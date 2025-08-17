@@ -55,6 +55,8 @@ public class ResourceUIAnimation : MonoBehaviour
         _cg.alpha = 0f;
         transform.localPosition = _startLocalPos;
         transform.localScale = Vector3.one;
+
+        SoundManager.Instance.PlaySound("GainResource");
         
         float t = 0f;
         float totalRiseTime = fadeInTime + holdTime + fadeOutTime;

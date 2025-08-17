@@ -3,9 +3,6 @@ using System.Threading.Tasks;
 using UnityEngine;
 using Utilities.UTask;
 
-/// <summary>
-/// Логика работы лодки. Реализует рабочее место для жителя.
-/// </summary>
 public class BoatLogic : BuildingLogic, IWorkplace
 {
     [SerializeField] private BoatData data;
@@ -16,32 +13,16 @@ public class BoatLogic : BuildingLogic, IWorkplace
     public override int MaxLevel => data.maxLevel;
     public override string BuildingName => data.displayName;
     public override BuildingData BuildingData => data;
-
-    /// <summary>
-    /// Рабочее место занято?
-    /// </summary>
     public bool IsOccupied => currentWorker != null;
-    /// <summary>
-    /// Текущий работник.
-    /// </summary>
     public Villager CurrentOccupant => currentWorker;
-
-    /// <summary>
-    /// Назначить работника.
-    /// </summary>
+    
     public void SetOccupant(Villager villager)
     {
         currentWorker = villager;
     }
 
-    /// <summary>
-    /// Точка работы для навигации.
-    /// </summary>
     public Vector3 GetWorkPoint() => workPoint ? workPoint.position : transform.position;
 
-    /// <summary>
-    /// Запуск работы жителя.
-    /// </summary>
     public UTask PerformWork(Villager villager, CancellationToken ct)
     {
         return new UTask(PerformVillagerWorkAsync(villager, ct));

@@ -17,6 +17,6 @@ MonoBehaviour:
   buildBaseCost: 5000
   upgradeBaseCost: 10000
   upgradeCostGrowth: 1.1
-  baseCycleSeconds: 5
+  baseCycleSeconds: 15
   baseMeatAmount: 1000
   meatPerLevelAdd: 2

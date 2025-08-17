@@ -14,6 +14,8 @@ public class ClickRouter : MonoBehaviour
     private Vector3 _downPos;
     private bool _pressed;
     private IInteractable _hover;
+    
+    [SerializeField] private UIWindow pauseMenu;
 
     void Awake()
     {
@@ -41,8 +43,10 @@ public class ClickRouter : MonoBehaviour
 
             if (TryRaycastInteract(out IInteractable interact))
             {
-                if (Input.GetMouseButtonUp(1)) interact.OnRightClick();
-                else                            interact.OnLeftClick();
+                if (Input.GetMouseButtonUp(1)) 
+                    interact.OnRightClick();
+                else                            
+                    interact.OnLeftClick();
             }
             else if (Input.GetMouseButtonUp(0))
             {
@@ -53,9 +57,19 @@ public class ClickRouter : MonoBehaviour
                 }
             }
         }
+        
+        TryOpenPauseMenu();
     }
 
-    void UpdateHover()
+    private void TryOpenPauseMenu()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            pauseMenu.Toggle();
+        }
+    }
+
+    private void UpdateHover()
     {
         if (EventSystem.current && EventSystem.current.IsPointerOverGameObject())
         {
@@ -69,7 +83,7 @@ public class ClickRouter : MonoBehaviour
             SetHover(null);
     }
 
-    void SetHover(IInteractable target)
+    private void SetHover(IInteractable target)
     {
         if (_hover == target) return;
         if (_hover != null) _hover.OnHover(false);
@@ -77,7 +91,7 @@ public class ClickRouter : MonoBehaviour
         if (_hover != null) _hover.OnHover(true);
     }
 
-    bool TryRaycastInteract(out IInteractable interact)
+    private bool TryRaycastInteract(out IInteractable interact)
     {
         interact = null;
         if (!cam) cam = Camera.main;
@@ -92,7 +106,7 @@ public class ClickRouter : MonoBehaviour
         return false;
     }
 
-    bool TryRaycastGround(Vector3 screenPos, out Vector3 point)
+    private bool TryRaycastGround(Vector3 screenPos, out Vector3 point)
     {
         point = default;
         if (!cam) cam = Camera.main;

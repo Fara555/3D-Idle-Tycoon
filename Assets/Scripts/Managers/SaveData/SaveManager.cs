@@ -7,6 +7,27 @@ using UnityEngine;
 public static class SaveManager
 {
 	private static readonly string savePath = Path.Combine(Application.persistentDataPath, "save.json");
+	
+	public static bool HasSave() => File.Exists(savePath);
+	
+	public static bool DeleteSave()
+	{
+		try
+		{
+			if (File.Exists(savePath))
+			{
+				File.Delete(savePath);
+				Debug.Log($"[SaveManager] Save deleted: {savePath}");
+				return true;
+			}
+			Debug.Log("[SaveManager] No save file to delete.");
+		}
+		catch (Exception e)
+		{
+			Debug.LogError($"[SaveManager] Delete failed: {e.Message}");
+		}
+		return false;
+	}
 
 	public static void SaveGame(List<BuildingLogic> allBuildings)
 	{
