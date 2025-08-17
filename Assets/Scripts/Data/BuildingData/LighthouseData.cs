@@ -23,14 +23,17 @@ public class LighthouseData : BuildingData
 		return baseGoldPerFish + (level - 1) * goldPerLevelAdd;
 	}
 
-	public override int GetUpgradeCost(int level, int indexMultiplier)
+	public override long GetUpgradeCost(int level, int indexMultiplier)
 	{
+		
 		level = Mathf.Clamp(level, 1, maxLevel - 1);
-		double cost = upgradeBaseCost * System.Math.Pow(upgradeCostGrowth, level - 1);
-		return Mathf.CeilToInt((float)cost) * indexMultiplier;
+		double raw = upgradeBaseCost * System.Math.Pow(upgradeCostGrowth, level - 1);
+		long baseCost = (long)System.Math.Ceiling(raw);
+
+		return baseCost * (long)indexMultiplier; 
 	}
 
-	public override int GetBuildCost(int indexMultiplier)
+	public override long GetBuildCost(int indexMultiplier)
 	{
 		return buildBaseCost * indexMultiplier;
 	}

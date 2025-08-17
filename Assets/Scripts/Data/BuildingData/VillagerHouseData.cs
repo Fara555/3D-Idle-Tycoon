@@ -29,12 +29,12 @@ public class VillagerHouseData : BuildingData
 
 	public override int GetCatchAmount(int level) => 0;
 
-	public override int GetUpgradeCost(int level, int indexMultiplier)
+	public override long GetUpgradeCost(int level, int indexMultiplier)
 	{
 		return upgradeBaseCost * level * indexMultiplier;
 	}
 
-	public override int GetBuildCost(int indexMultiplier)
+	public override long GetBuildCost(int indexMultiplier)
 	{
 		return buildBaseCost * indexMultiplier;
 	}

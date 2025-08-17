@@ -23,12 +23,12 @@ public class MeatShopData : BuildingData
 		return baseMeatAmount + meatPerLevelAdd * (level - 1);
 	}
 
-	public override int GetUpgradeCost(int level, int indexMultiplier)
+	public override long GetUpgradeCost(int level, int indexMultiplier)
 	{
 		return Mathf.CeilToInt(upgradeBaseCost * Mathf.Pow(upgradeCostGrowth, level - 1)) * indexMultiplier;
 	}
 
-	public override int GetBuildCost(int indexMultiplier)
+	public override long GetBuildCost(int indexMultiplier)
 	{
 		return buildBaseCost * indexMultiplier;
 	}

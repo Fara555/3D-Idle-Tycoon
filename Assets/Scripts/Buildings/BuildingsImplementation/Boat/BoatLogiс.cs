@@ -84,8 +84,8 @@ public class BoatLogic : BuildingLogic, IWorkplace
         return baseAmount * IndexMultiplier;
     }
 
-    public override int GetBuildCost() => data.GetBuildCost(IndexMultiplier);
-    public override int GetUpgradeCost() => data.GetUpgradeCost(Level, IndexMultiplier);
+    public override long GetBuildCost() => data.GetBuildCost(IndexMultiplier);
+    public override long GetUpgradeCost() => data.GetUpgradeCost(Level, IndexMultiplier);
     public override string GetCycleLabel() => "Cycle";
     public override string GetAmountLabel() => "Catch";
     public override string GetWorkAnimation() => "Fishing Cast";

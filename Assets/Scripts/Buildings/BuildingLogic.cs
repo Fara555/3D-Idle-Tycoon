@@ -36,8 +36,8 @@ public abstract class BuildingLogic : MonoBehaviour
     public event Action<int> OnYield { add => onYield += value; remove => onYield -= value; }
     public event Action<bool> OnWorkStartedWithSource { add => onWorkStartedWithSource += value; remove => onWorkStartedWithSource -= value; }
 
-    public virtual int BaseBuildCost => 100;
-    public virtual int BaseUpgradeCost => 75;
+    public virtual  long BaseBuildCost => 100;
+    public virtual  long BaseUpgradeCost => 75;
     public virtual float BaseCycleTime => 5f;
     public virtual int BaseCatchAmount => 2;
 
@@ -46,8 +46,8 @@ public abstract class BuildingLogic : MonoBehaviour
 
     public virtual float GetCycleTime() => BaseCycleTime / IndexMultiplier;
     public virtual int GetCatchAmount() => BaseCatchAmount * IndexMultiplier * Level;
-    public virtual int GetBuildCost() => BaseBuildCost * IndexMultiplier;
-    public virtual int GetUpgradeCost() => BaseUpgradeCost * Level * IndexMultiplier;
+    public virtual long GetBuildCost() => BaseBuildCost * IndexMultiplier;
+    public virtual long GetUpgradeCost() => BaseUpgradeCost * Level * IndexMultiplier;
     public virtual string GetCycleLabel() => "Cycle";
     public virtual string GetAmountLabel() => "Amount";
 

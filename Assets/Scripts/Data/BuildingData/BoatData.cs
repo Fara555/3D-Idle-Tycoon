@@ -28,14 +28,14 @@ public class BoatData : BuildingData
 		return baseCatchAmount + (level - 1) * catchPerLevelAdd;
 	}
 
-	public override int GetUpgradeCost(int level, int boatIndexMultiplier)
+	public override long GetUpgradeCost(int level, int boatIndexMultiplier)
 	{
 		int lvl = Mathf.Clamp(level, 1, maxLevel - 1);
 		double cost = upgradeBaseCost * System.Math.Pow(upgradeCostGrowth, lvl - 1);
 		return Mathf.CeilToInt((float)cost) * boatIndexMultiplier;
 	}
 
-	public override int GetBuildCost(int boatIndexMultiplier)
+	public override long GetBuildCost(int boatIndexMultiplier)
 	{
 		return buildBaseCost * boatIndexMultiplier;
 	}

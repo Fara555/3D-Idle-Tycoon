@@ -13,8 +13,8 @@ public class LightHouseLogic : BuildingLogic
     public override BuildingData BuildingData => data;
 
     public override float GetCycleTime() => data.GetCycleSeconds();
-    public override int GetBuildCost() => data.GetBuildCost(IndexMultiplier);
-    public override int GetUpgradeCost() => data.GetUpgradeCost(Level, IndexMultiplier);
+    public override long GetBuildCost() => data.GetBuildCost(IndexMultiplier);
+    public override long GetUpgradeCost() => data.GetUpgradeCost(Level, IndexMultiplier);
     public override int GetCatchAmount() => data.GetCatchAmount(Level);
 
     // Игрок запускает

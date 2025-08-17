@@ -12,8 +12,8 @@ public class VillagerHouseLogic : BuildingLogic
 	public override string BuildingName => "Villager House";
 	public override int MaxLevel => data.maxLevel;
 	
-	public override int BaseBuildCost => data.buildBaseCost;
-	public override int BaseUpgradeCost => data.upgradeBaseCost;
+	public override long BaseBuildCost => data.buildBaseCost;
+	public override long BaseUpgradeCost => data.upgradeBaseCost;
 
 	public IReadOnlyList<Villager> Villagers => villagers;
 
