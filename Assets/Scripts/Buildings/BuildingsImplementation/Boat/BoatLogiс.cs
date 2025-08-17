@@ -12,7 +12,7 @@ public class BoatLogic : BuildingLogic, IWorkplace
 
     public override int MaxLevel => data.maxLevel;
     public override string BuildingName => data.displayName;
-    public override BuildingData BuildingData => data;
+    public override BuildingData buildingData => data;
     public bool IsOccupied => currentWorker != null;
     public Villager CurrentOccupant => currentWorker;
     

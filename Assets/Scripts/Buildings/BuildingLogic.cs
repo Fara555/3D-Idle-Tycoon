@@ -7,7 +7,7 @@ using Utilities.UTask;
 [DefaultExecutionOrder(-10)]
 public abstract class BuildingLogic : MonoBehaviour
 {
-    public abstract BuildingData BuildingData { get; }
+    public abstract BuildingData buildingData { get; }
 
     [Header("State")]
     [SerializeField] private bool startBuilt = false;
@@ -89,7 +89,7 @@ public abstract class BuildingLogic : MonoBehaviour
 
     public virtual void StartWork(Villager villager, CancellationToken ct)
     {
-        StartWork(ct, true); // используется в дочерних классах с перегрузкой
+        StartWork(ct, true); 
     }
 
     public virtual async void StartWork(CancellationToken ct, bool isVillager = false)

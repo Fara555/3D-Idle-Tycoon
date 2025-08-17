@@ -16,7 +16,7 @@ public class NavPathRenderer : MonoBehaviour
     [SerializeField] private NavMeshAgent _agent;
     private LineRenderer _lr;
 
-    void Awake()
+    private void Awake()
     {
         _lr = GetComponent<LineRenderer>();
         _lr.useWorldSpace = true;
@@ -31,12 +31,12 @@ public class NavPathRenderer : MonoBehaviour
             _lr.material = new Material(_lr.material);
     }
 
-    void Update()
+    private void Update()
     {
         DrawFromAgentPath();
     }
 
-    void DrawFromAgentPath()
+    private void DrawFromAgentPath()
     {
         if (_agent == null || !_agent.enabled || _agent.pathPending || !_agent.hasPath)
         {
@@ -71,14 +71,14 @@ public class NavPathRenderer : MonoBehaviour
         if (!_lr.enabled) _lr.enabled = true;
     }
 
-    Vector3 GroundProject(Vector3 origin)
+    private Vector3 GroundProject(Vector3 origin)
     {
         if (Physics.Raycast(origin + Vector3.up * 100f, Vector3.down, out var hit, 1000f, groundLayers))
             return hit.point;
         return origin;
     }
 
-    void Hide()
+    private void Hide()
     {
         if (_lr.enabled) _lr.enabled = false;
         _lr.positionCount = 0;

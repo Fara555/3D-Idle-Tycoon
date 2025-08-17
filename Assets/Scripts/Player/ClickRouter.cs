@@ -17,12 +17,12 @@ public class ClickRouter : MonoBehaviour
     
     [SerializeField] private UIWindow pauseMenu;
 
-    void Awake()
+    private void Awake()
     {
         if (!cam) cam = Camera.main;
     }
 
-    void Update()
+    private void Update()
     {
         UpdateHover();
 

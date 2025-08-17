@@ -8,7 +8,7 @@ public class VillagerHouseLogic : BuildingLogic
 	[SerializeField] private Villager villagerPrefab;
 
 	private List<Villager> villagers = new List<Villager>();
-	public override BuildingData BuildingData => data;
+	public override BuildingData buildingData => data;
 	public override string BuildingName => "Villager House";
 	public override int MaxLevel => data.maxLevel;
 	

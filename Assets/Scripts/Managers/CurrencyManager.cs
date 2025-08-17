@@ -85,7 +85,6 @@ public class CurrencyManager : MonoBehaviour
 		fish = Math.Min(fish, maxFishCapacity); 
 		OnFishChanged?.Invoke(fish, maxFishCapacity);
 	}
-
 	
 	private long _prevGold;
 	private long _prevFish;

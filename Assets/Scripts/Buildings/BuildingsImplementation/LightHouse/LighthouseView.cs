@@ -38,14 +38,6 @@ public class LighthouseView : BuildingView
         boatCts?.Dispose();
         boatCts = null;
     }
-
-    private void OnStart()
-    {
-        boatCts?.Cancel();
-        boatCts = new CancellationTokenSource();
-        _ = MoveBoatInAsync(boatCts.Token);
-    }
-    
     
     private void OnWorkStarted(bool isVillager)
     {

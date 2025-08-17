@@ -22,13 +22,13 @@ public static class LighthouseLocator
 
 		var logic = Find();
 		var interactable = logic?.GetComponent<BuildingInteractable>();
-		_sellPointCached = interactable?.transform; // можно заменить на специальную точку
+		_sellPointCached = interactable?.transform; 
 		return _sellPointCached != null ? _sellPointCached.position : Vector3.zero;
 	}
 
 	public static async Task<Vector3> GetSellPointAsync()
 	{
-		await UTaskEx.NextFrame(); // вдруг здание ещё не прогрузилось
+		await UTaskEx.NextFrame(); 
 		return GetSellPoint();
 	}
 
@@ -40,9 +40,9 @@ public static class LighthouseLocator
 		bool spent = CurrencyManager.Instance.TrySpendFish(amount);
 		if (spent)
 		{
-			long gold = amount * logic.BuildingData.GetCatchAmount(logic.Level);
+			long gold = amount * logic.buildingData.GetCatchAmount(logic.Level);
 			CurrencyManager.Instance.AddGold(gold);
-			logic.InvokeYield(gold); // кастомный метод для уведомлений UI и анимаций
+			logic.InvokeYield(gold); 
 		}
 	}
 }

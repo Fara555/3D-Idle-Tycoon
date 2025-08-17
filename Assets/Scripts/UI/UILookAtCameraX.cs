@@ -22,7 +22,7 @@ public class UILookAtCameraX : MonoBehaviour
 		_fixedLocalZ = e.z;
 	}
 
-	void LateUpdate()
+	private void LateUpdate()
 	{
 		LookAtCamera();
 	}

@@ -18,19 +18,19 @@ public class ResourceUIAnimation : MonoBehaviour
     private Vector3 _startLocalPos;
     private CancellationTokenSource _cts;
 
-    void Awake()
+    private void Awake()
     {
         _cg = GetComponent<CanvasGroup>();
         if (!_cg) _cg = gameObject.AddComponent<CanvasGroup>();
         _startLocalPos = transform.localPosition;
     }
 
-    void OnEnable()
+    private void OnEnable()
     {
         Restart();
     }
 
-    void OnDisable()
+    private void OnDisable()
     {
         _cts?.Cancel();
         _cts?.Dispose();

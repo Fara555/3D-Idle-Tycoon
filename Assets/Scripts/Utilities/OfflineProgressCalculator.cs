@@ -5,7 +5,7 @@ public static class OfflineProgressCalculator
 {
 	public static long Apply(List<BuildingLogic> buildings, double seconds)
 	{
-		double cappedSeconds = Mathf.Min((int)seconds, 6 * 3600); // макс 6 часов
+		double cappedSeconds = Mathf.Min((int)seconds, 6 * 3600); 
 		long totalGold = 0;
 
 		foreach (var b in buildings)
@@ -16,7 +16,7 @@ public static class OfflineProgressCalculator
 			VillagerHouseLogic house = FindOwnerHouse(b, buildings);
 			if (house == null) continue;
 
-			var stats = house.BuildingData is VillagerHouseData vData
+			var stats = house.buildingData is VillagerHouseData vData
 				? vData.GetStats(house.Level)
 				: null;
 
@@ -52,7 +52,7 @@ public static class OfflineProgressCalculator
 	{
 		var light = LighthouseLocator.Find();
 		if (light == null || !light.IsBuilt) return 1;
-		return light.BuildingData.GetCatchAmount(light.Level);
+		return light.buildingData.GetCatchAmount(light.Level);
 	}
 
 	private static VillagerHouseLogic FindOwnerHouse(BuildingLogic workplace, List<BuildingLogic> all)

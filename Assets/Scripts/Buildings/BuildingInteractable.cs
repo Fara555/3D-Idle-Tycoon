@@ -6,12 +6,9 @@ using Utilities.UTask;
 
 public interface IInteractable
 {
-    public abstract Vector3 GetInteractPoint();
-    public abstract float GetInteractRadius();
-	
-    public virtual void OnLeftClick() { }
-    public virtual void OnRightClick() { }
-    public virtual void OnHover(bool state) { }
+    public  void OnLeftClick() { }
+    public  void OnRightClick() { }
+    public  void OnHover(bool state) { }
 }
 
 [RequireComponent(typeof(Collider))]

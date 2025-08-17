@@ -3,9 +3,6 @@ using System.Threading.Tasks;
 using UnityEngine;
 using Utilities.UTask;
 
-/// <summary>
-/// Логика мясной лавки. Рабочее место, в котором персонаж "заходит внутрь".
-/// </summary>
 public class MeatShopLogic : BuildingLogic, IWorkplace
 {
     [SerializeField] private MeatShopData data;
@@ -15,7 +12,7 @@ public class MeatShopLogic : BuildingLogic, IWorkplace
 
     public override int MaxLevel => data.maxLevel;
     public override string BuildingName => data.displayName;
-    public override BuildingData BuildingData => data;
+    public override BuildingData buildingData => data;
 
     public bool IsOccupied => currentWorker != null;
     public Villager CurrentOccupant => currentWorker;
@@ -39,7 +36,6 @@ public class MeatShopLogic : BuildingLogic, IWorkplace
     {
         currentWorker = villager;
 
-        // Спрятать жителя — он "зашёл внутрь"
         var renderers = villager.GetComponentsInChildren<Renderer>();
         foreach (var r in renderers)
             r.enabled = false;
@@ -60,7 +56,6 @@ public class MeatShopLogic : BuildingLogic, IWorkplace
             onYield?.Invoke(amount);
         }
 
-        // Появляется снова
         foreach (var r in renderers)
             r.enabled = true;
 
@@ -69,7 +64,7 @@ public class MeatShopLogic : BuildingLogic, IWorkplace
 
     public override async void StartWork(CancellationToken ct, bool isVillager = false)
     {
-        if (!IsBuilt || isVillager) return; // игрокская работа
+        if (!IsBuilt || isVillager) return;
 
         _isWorking = true;
         onWorkStartedWithSource?.Invoke(isVillager);
@@ -101,7 +96,7 @@ public class MeatShopLogic : BuildingLogic, IWorkplace
             if (!ct.IsCancellationRequested)
             {
                 int amount = GetCatchAmount();
-                CurrencyManager.Instance.AddFish(amount); // Или AddMeat(...) если будет такая валюта
+                CurrencyManager.Instance.AddFish(amount); 
                 onYield?.Invoke(amount);
             }
         }

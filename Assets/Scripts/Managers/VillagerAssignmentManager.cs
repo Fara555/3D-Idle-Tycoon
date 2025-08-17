@@ -25,7 +25,6 @@ public class VillagerAssignmentManager : MonoBehaviour
 
 		if (workplace is BuildingLogic logic && !logic.IsBuilt)
 		{
-			Debug.Log("Нельзя назначить на недостроенное здание!");
 			SoundManager.Instance.PlaySound("AssignIncorrectly");
 			CancelAssignment();
 			return;
@@ -33,7 +32,6 @@ public class VillagerAssignmentManager : MonoBehaviour
 
 		if (workplace.IsOccupied && workplace.CurrentOccupant != selectedVillager)
 		{
-			Debug.Log("Рабочее место уже занято!");
 			SoundManager.Instance.PlaySound("AssignIncorrectly");
 			CancelAssignment();
 			return;

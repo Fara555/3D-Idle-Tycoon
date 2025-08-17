@@ -10,26 +10,23 @@ public class LightHouseLogic : BuildingLogic
 
     public override int MaxLevel => data.maxLevel;
     public override string BuildingName => data.displayName;
-    public override BuildingData BuildingData => data;
+    public override BuildingData buildingData => data;
 
     public override float GetCycleTime() => data.GetCycleSeconds();
     public override long GetBuildCost() => data.GetBuildCost(IndexMultiplier);
     public override long GetUpgradeCost() => data.GetUpgradeCost(Level, IndexMultiplier);
     public override int GetCatchAmount() => data.GetCatchAmount(Level);
 
-    // Игрок запускает
     public override void StartWork(CancellationToken ct, bool isVillagerSale = false)
     {
         _ = InternalStartWorkAsync(ct, isVillagerSale);
     }
 
-    // Житель запускает
     public override void StartWork(Villager villager, CancellationToken ct)
     {
         _ = InternalStartWorkAsync(ct, true, villager);
     }
 
-    // ✅ Асинхронная продажа с возвращаемым Task
     public Task StartWorkAsync(CancellationToken ct, bool isVillagerSale, Villager sourceVillager)
     {
         return InternalStartWorkAsync(ct, isVillagerSale, sourceVillager);

@@ -55,8 +55,6 @@ public class UIWindow : MonoBehaviour
         CancelAnim();
     }
 
-    // ---------------- Public API ----------------
-
     public void Show()
     {
         gameObject.SetActive(true);
@@ -121,12 +119,9 @@ public class UIWindow : MonoBehaviour
         panelRt.localScale     = hiddenScale;
         gameObject.SetActive(false);
     }
-
-    // ---------------- Sequences (ordered steps) ----------------
-
+    
     private async Task ShowSequence(CancellationToken ct)
     {
-        // 1) Сначала — фон (fade in)
         if (darkBG)
         {
             darkBG.SetActive(true);
@@ -236,8 +231,7 @@ public class UIWindow : MonoBehaviour
     private void EnsureBgInteractable(bool on)
     {
         if (!bgCg) return;
-        bgCg.blocksRaycasts = on; // чтобы клики не проходили насквозь
-        // interactable для CanvasGroup влияет на некоторые UI, можно оставить true
+        bgCg.blocksRaycasts = on; 
         bgCg.interactable = on;
     }
 

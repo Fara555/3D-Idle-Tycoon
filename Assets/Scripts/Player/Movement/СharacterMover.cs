@@ -18,7 +18,7 @@ public class СharacterMover : MonoBehaviour
     private Action<Vector3> OnMoveCommand;
 
 
-    void Awake()
+    private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
         _agent.stoppingDistance = stoppingDistance;
@@ -29,7 +29,7 @@ public class СharacterMover : MonoBehaviour
         if (!animator) animator = GetComponentInChildren<Animator>();
     }
 
-    void Update()
+    private void Update()
     {
         HandleRotation();
         HandleAnimation();
@@ -38,7 +38,7 @@ public class СharacterMover : MonoBehaviour
             _agent.ResetPath();
     }
 
-    void HandleRotation()
+    private void HandleRotation()
     {
         if (!rotateTowardsVelocity) return;
         Vector3 vel = _agent.steeringTarget - transform.position; vel.y = 0f;
@@ -49,7 +49,7 @@ public class СharacterMover : MonoBehaviour
         }
     }
 
-    void HandleAnimation()
+    private void HandleAnimation()
     {
         if (!animator || string.IsNullOrEmpty(speedParam)) return;
         animator.SetFloat(speedParam, _agent.velocity.magnitude);
